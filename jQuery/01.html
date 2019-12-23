@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .show{
+            height: 50px;
+            margin-bottom: 10px;
+            background-color: red;
+            display: none;
+        }
+
+    </style>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+
+        window.onload = function () {
+            console.log("我是js的入口函数");
+        };
+
+        $(document).ready(function () {
+            console.log("这是jQuery入口函数的第一种写法");
+           $("#btn1").click(function () {
+               $("div").show();
+           });
+
+           $("#btn2").click(function () {
+               $("div").text("我是内容");
+           });
+
+           $("#btn3").click(function () {
+               $("li").text("li-li");
+               $("li")[0].setAttribute("name", "hehe");
+           })
+        });
+        console.log(typeof $);
+
+        $(function () {
+            console.log("这是jQuery入口函数的第二种写法");
+            // var lis = $("li");
+            // for (var i=0; i< lis.length; i++){
+            //     if (i % 2 == 0){
+            //         lis[i].style.backgroundColor = "red";
+            //     }else{
+            //         lis[i].style.backgroundColor = "green";
+            //     }
+            // }
+
+            $("li:even").css("backgroundColor", "red");
+            console.log($("li:even"));
+
+            $("li:odd").css("backgroundColor", "cyan");
+            console.log($("li:odd"));
+
+            $("li:lt(3)").css("fontSize", "32px");
+
+            $("#father > p").css("backgroundColor", "red");
+
+            //$("s1,s2")// 并集选择器
+            //$("s1 s2")// 后代选择器
+            //$("s1>s2")// 子代选择器
+            //$("li.green")
+            //$("s1s2") //交集选择器
+        });
+        console.log(typeof $);
+    </script>
+</head>
+<body>
+<input type="button" value="显示div" id="btn1">
+<input type="button" value="设置内容" id="btn2">
+
+<div class="show"></div>
+<input type="button" value="li修改内容" id="btn3">
+
+<ul>
+    <li id="cloth">我是第1个li</li>
+    <li>我是第2个li</li>
+    <li>我是第3个li</li>
+    <li>我是第4个li</li>
+    <li>我是第5个li</li>
+    <li>我是第6个li</li>
+</ul>
+
+<div id="father">
+    <div>11</div>
+    <div>22
+        <p>111</p>
+        <p>222</p>
+        <p>333</p>
+    </div>
+    <div>33</div>
+    <div>44</div>
+    <div>55</div>
+    <p>66</p>
+    <p>77</p>
+    <p>88</p>
+</div>
+
+</body>
+</html>
